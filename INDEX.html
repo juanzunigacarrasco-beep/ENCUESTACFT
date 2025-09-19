@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Encuesta de Satisfacción y Sugerencias Estudiantiles</title>
+    <style>
+        /* Restablecimiento básico */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #dd5620 0%, #df6a0bfd 100%);
+            min-height: 100vh;
+            padding: 20px;
+            display: flex; /* Para centrar el contenedor verticalmente si es necesario */
+            justify-content: center; /* Centrar horizontalmente */
+            align-items: center; /* Centrar verticalmente */
+        }
+
+        .container {
+            max-width: 900px;
+            width: 100%; /* Asegura que ocupe el ancho máximo */
+            margin: 0 auto; /* Centrado horizontal */
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden; /* Para que los bordes redondeados se apliquen correctamente a los elementos internos */
+        }
+
+        .logo-container {
+            text-align: center;
+            padding: 20px;
+            background: #ffffff; /* Fondo blanco para el logo */
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .logo-container img {
+            max-width: 250px; /* Ajusta el tamaño del logo según sea necesario */
+            height: auto;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #2c3e50, #34495e);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.2em;
+            margin-bottom: 20px;
+            font-weight: 300;
+        }
+
+        .intro {
+            background: #f8f9fa;
+            padding: 30px;
+            border-bottom: 3px solid #e9ecef;
+        }
+
+        .intro h2 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+        }
+
+        .intro p {
+            margin-bottom: 15px;
+            color: #555;
+        }
+
+        .instructions {
+            background: #e3f2fd;
+            padding: 20px;
+            margin: 20px 30px; /* Margen para separarlo de los bordes del contenedor */
+            border-left: 4px solid #2196f3;
+            border-radius: 5px;
+        }
+
+        .instructions strong {
+            color: #1976d2;
+        }
+
+        .form-content {
+            padding: 30px;
+        }
+
+        .area {
+            margin-bottom: 40px;
+            border: 1px solid #e0e0e0;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05); /* Sutil sombra para destacar áreas */
+        }
+
+        .area-header {
+            background: linear-gradient(135deg, #2d4ee4, #673699);
+            color: white;
+            padding: 20px;
+        }
+
+        .area-header h3 {
+            font-size: 1.3em;
+            margin-bottom: 10px;
+        }
+
+        .area-header p {
+            font-size: 0.9em;
+            opacity: 0.9;
+        }
+
+        .area-content {
+            padding: 25px;
+        }
+
+        .question {
+            margin-bottom: 25px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+
+        .question-text {
+            font-weight: 500;
+            margin-bottom: 15px;
+            color: #2c3e50;
+            font-size: 1.05em;
+        }
+
+        .options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 15px;
+        }
+
+        .option {
+            display: flex;
+            align-items: center;
+            padding: 10px 15px;
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .option:hover {
+            border-color: #667eea;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.2);
+        }
+
+        .option input[type="radio"] {
+            margin-right: 8px;
+            accent-color: #667eea;
+        }
+
+        .option.selected {
+            background: #667eea;
+            color: white;
+            border-color: #667eea;
+        }
+
+        /* Estilos para comentarios de área */
+        .area-comments {
+            margin-top: 30px;
+            padding: 20px;
+            background: #fff3e0;
+            border-radius: 8px;
+            border-left: 4px solid #ff9800;
+        }
+
+        .area-comments label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 600;
+            color: #e65100;
+            font-size: 1.1em;
+        }
+
+        .area-comments textarea {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #ffcc02;
+            border-radius: 8px;
+            resize: vertical;
+            min-height: 100px;
+            font-family: inherit;
+            transition: border-color 0.3s ease;
+            font-size: 14px;
+        }
+
+        .area-comments textarea:focus {
+            outline: none;
+            border-color: #ff9800;
+            box-shadow: 0 0 0 3px rgba(255, 152, 0, 0.1);
+        }
+
+        .submit-section {
+            text-align: center;
+            padding: 30px;
+            background: #f8f9fa;
+            border-top: 1px solid #e0e0e0;
+            /* Estos border-radius se movieron a .footer-rights */
+            /* border-bottom-left-radius: 15px; */
+            /* border-bottom-right-radius: 15px; */
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 30px;
+            font-size: 1.1em;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+        }
+
+        /* Estilos para el pie de página de derechos reservados */
+        .footer-rights {
+            text-align: center;
+            padding: 20px;
+            margin-top: 0; /* Asegura que no haya margen superior si va pegado */
+            background: #2c3e50; /* Un fondo oscuro para contrastar */
+            color: #ecf0f1; /* Color de texto claro */
+            font-size: 0.9em;
+            border-top: 1px solid #34495e;
+            border-bottom-left-radius: 15px; /* Redondeo final para el contenedor */
+            border-bottom-right-radius: 15px; /* Redondeo final para el contenedor */
+        }
+
+        /* Media Queries para responsividad */
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            .container {
+                margin: 10px auto; /* Mantener centrado con un poco de margen */
+                border-radius: 10px;
+            }
+
+            .header {
+                padding: 30px 20px;
+            }
+
+            .header h1 {
+                font-size: 1.8em;
+            }
+
+            .form-content {
+                padding: 20px;
+            }
+
+            .options {
+                grid-template-columns: 1fr; /* Una columna en pantallas pequeñas */
+            }
+            .footer-rights {
+                border-bottom-left-radius: 10px; /* Ajusta el redondeo para móviles */
+                border-bottom-right-radius: 10px; /* Ajusta el redondeo para móviles */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo-container">
+            <img src="logo3.png" alt="Logo CFT Estatal O'Higgins">
+        </div>
+        <div class="header">
+            <h1>Encuesta de Satisfacción y Sugerencias Estudiantiles</h1>
+        </div>
+
+        <div class="intro">
+            <h2>Introducción</h2>
+            <p>Para nuestro Centro C.F.T. Estatal de O'Higgins; la opinión de nuestros estudiantes es el pilar para la mejora continua.</p>
+            <p>Este formulario es una invitación para que nos entregues tu valiosa retroalimentación sobre tu experiencia educativa, la calidad de nuestros servicios y las áreas que podemos fortalecer. Tus sugerencias y observaciones nos permiten implementar cambios efectivos que respondan a las necesidades de nuestro alumnado.</p>
+            <p>Agradecemos sinceramente tu participación. La información recopilada será tratada de forma confidencial y es fundamental para nuestro plan de mejoras.</p>
+        </div>
+
+        <div class="instructions">
+            <strong>Instrucción:</strong> Por favor, califica los siguientes enunciados en una escala "Conforme", "No conforme", "Sin interés", "No sabe"
+        </div>
+
+        <form class="form-content" id="encuestaForm">
+            <div class="area">
+                <div class="area-header">
+                    <h3>Área 1: Infraestructura y Recursos de Aprendizaje</h3>
+                    <p>Esta área se enfoca en evaluar las instalaciones y los materiales que el centro pone a disposición de los estudiantes.</p>
+                </div>
+                <div class="area-content">
+                    <div class="question">
+                        <div class="question-text">1. ¿Cómo calificarías el estado y la comodidad de las salas de clases y talleres?</div>
+                        <div class="options">
+                            <label class="option">
+                                <input type="radio" name="area1_q1" value="conforme" required>
+                                Conforme
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="area1_q1" value="no_conforme" required>
+                                No conforme
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="area1_q1" value="sin_interes" required>
+                                Sin interés
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="area1_q1" value="no_sabe" required>
+                                No sabe
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="question">
+                        <div class="question-text">2. ¿Consideras que los equipos, herramientas y maquinarias utilizados en tus clases prácticas están actualizados y en buen estado?</div>
+                        <div class="options">
+                            <label class="option">
+                                <input type="radio" name="area1_q2" value="conforme" required>
+                                Conforme
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="area1_q2" value="no_conforme" required>
+                                No conforme
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="area1_q2" value="sin_interes" required>
+                                Sin interés
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="area1_q2" value="no_sabe" required>
+                                No sabe
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="question">
+                        <div class="question-text">3. ¿El acceso a computadores, software y conexión a internet en el centro es adecuado para tus necesidades académicas?</div>
+                        <div class="options">
+                            <label class="option">
+                                <input type="radio" name="area1_q3" value="conforme" required>
+                                Conforme
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="area1_q3" value="no_conforme" required>
+                                No conforme
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="area1_q3" value="sin_interes" required>
+                                Sin interés
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="area1_q3" value="no_sabe" required>
+                                No sabe
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="question">
+                        <div class="question-text">4. ¿Los materiales de estudio proporcionados por el centro (manuales, guías, etc.) son claros y útiles para tu aprendizaje?</div>
+                        <div class="options">
+                            <label class="option">
+                                <input type="radio" name="area1_q4" value="conforme" required>
+                                Conforme
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="area1_q4" value="no_conforme" required>
+                                No conforme
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="area1_q4" value="sin_interes" required>
+                                Sin interés
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="area1_q4" value="no_sabe" required>
+                                No sabe
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="question">
+                        <div class="question-text">5. ¿Cómo evalúas la limpieza y el orden general de las instalaciones del centro (baños, pasillos, áreas comunes)?</div>
+                        <div class="options">
+                            <label class="option">
+                                <input type="radio" name="area1_q5" value="conforme" required>
+                                Conforme
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="area1_q5" value="no_conforme" required>
+                                No conforme
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="area1_q5" value="sin_interes" required>
+                                Sin interés
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="area1_q5" value="no_sabe" required>
+                                No sabe
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="question">
+                        <div class="question-text">6. ¿La biblioteca o centro de recursos cuenta con el material bibliográfico y digital que necesitas para tus asignaturas?</div>
+                        <div class="options">
+                            <label class="option">
+                                <input type="radio" name="area1_q6" value="conforme" required>
+                                Conforme
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="area1_q6" value="no_conforme" required>
+                                No conforme
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="area1_q6" value="sin_interes" required>
+                                Sin interés
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="area1_q6" value="no_sabe" required>
+                                No sabe
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="area-comments">
+                        <label for="area1_comments">Recomendaciones o reclamos para el Área de Infraestructura y Recursos de Aprendizaje:</label>
+                        <textarea id="area1_comments" name="area1_comments" minlength="10" maxlength="500" placeholder="Escribe aquí tus recomendaciones, sugerencias o reclamos relacionados con la infraestructura y recursos de aprendizaje..."></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <div class="area">
+                <div class="area-header">
+                    <h3>Área 2: Calidad Docente y Proceso de Enseñanza</h3>
+                    <p>Esta sección está diseñada para conocer la percepción de los estudiantes sobre sus profesores y las metodologías de enseñanza.</p>
+                </div>
+                <div class="area-content">
+                    <div class="question">
+                        <div class="question-text">1. ¿Los docentes demuestran un dominio y conocimiento profundo de las materias que imparten?</div>
+                        <div class="options">
+                            <label class="option">
+                                <input type="radio" name="area2_q1" value="conforme" required>
+                                Conforme
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="area2_q1" value="no_conforme" required>
+                                No conforme
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="area2_q1" value="sin_interes" required>
+                                Sin interés
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="area2_q1" value="no_sabe" required>
+                                No sabe
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="question">
+                        <div class="question-text">2. ¿Los profesores utilizan métodos de enseñanza que facilitan tu comprensión y aprendizaje (ejemplos prácticos, uso de tecnología, etc.)?</div>
+                        <div class="options">
+                            <label class="option">
+                                <input type="radio" name="area2_q2" value="conforme" required>
+                                Conforme
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="area2_q2" value="no_conforme" required>
+                                No conforme
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="area2_q2" value="sin_interes" required>
+                                Sin interés
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="area2_q2" value="no_sabe" required>
+                                No sabe
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="question">
+                        <div class="question-text">3. ¿Sientes que los docentes están disponibles para resolver tus dudas y apoyarte en tu proceso de formación?</div>
+                        <div class="options">
+                            <label class="option">
+                                <input type="radio" name="area2_q3" value="conforme" required>
+                                Conforme
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="area2_q3" value="no_conforme" required>
+                                No conforme
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="area2_q3" value="sin_interes" required>
+                                Sin interés
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="area2_q3" value="no_sabe" required>
+                                No sabe
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="question">
+                        <div class="question-text">4. ¿La forma en que se te evalúa (pruebas, trabajos, etc.) es justa y representativa de lo aprendido en clases?</div>
+                        <div class="options">
+                            <label class="option">
+                                <input type="radio" name="area2_q4" value="conforme" required>
+                                Conforme
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="area2_q4" value="no_conforme" required>
+                                No conforme
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="area2_q4" value="sin_interes" required>
+                                Sin interés
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="area2_q4" value="no_sabe" required>
+                                No sabe
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="question">
+                        <div class="question-text">5. ¿Los profesores fomentan un ambiente de respeto y participación en las salas?</div>
+                        <div class="options">
+                            <label class="option">
+                                <input type="radio" name="area2_q5" value="conforme" required>
+                                Conforme
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="area2_q5" value="no_conforme" required>
+                                No conforme
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="area2_q5" value="sin_interes" required>
+                                Sin interés
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="area2_q5" value="no_sabe" required>
+                                No sabe
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="question">
+                        <div class="question-text">6. ¿Recibes retroalimentación útil y a tiempo sobre tu desempeño académico por parte de tus docentes?</div>
+                        <div class="options">
+                            <label class="option">
+                                <input type="radio" name="area2_q6" value="conforme" required>
+                                Conforme
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="area2_q6" value="no_conforme" required>
+                                No conforme
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="area2_q6" value="sin_interes" required>
+                                Sin interés
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="area2_q6" value="no_sabe" required>
+                                No sabe
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="area-comments">
+                        <label for="area2_comments">Recomendaciones o reclamos para el Área de Calidad Docente y Proceso de Enseñanza:</label>
+                        <textarea id="area2_comments" name="area2_comments" minlength="10" maxlength="500" placeholder="Escribe aquí tus recomendaciones, sugerencias o reclamos relacionados con la calidad docente y procesos de enseñanza..."></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <div class="area">
+                <div class="area-header">
+                    <h3>Área 3: Servicios de Apoyo y Vida Estudiantil</h3>
+                    <p>El objetivo de esta área es evaluar los servicios de apoyo al estudiante y el ambiente general del centro.</p>
+                </div>
+                <div class="area-content">
+                    <div class="question">
+                        <div class="question-text">1. ¿Cómo calificarías la atención y la eficiencia del personal administrativo (secretaría, finanzas, etc.)?</div>
+                        <div class="options">
+                            <label class="option">
+                                <input type="radio" name="area3_q1" value="conforme" required>
+                                Conforme
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="area3_q1" value="no_conforme" required>
+                                No conforme
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="area3_q1" value="sin_interes" required>
+                                Sin interés
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="area3_q1" value="no_sabe" required>
+                                No sabe
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="question">
+                        <div class="question-text">2. ¿Los canales de comunicación del centro (página web, redes sociales, correos) te mantienen bien informado sobre noticias y eventos importantes?</div>
+                        <div class="options">
+                            <label class="option">
+                                <input type="radio" name="area3_q2" value="conforme" required>
+                                Conforme
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="area3_q2" value="no_conforme" required>
+                                No conforme
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="area3_q2" value="sin_interes" required>
+                                Sin interés
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="area3_q2" value="no_sabe" required>
+                                No sabe
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="question">
+                        <div class="question-text">3. ¿Sientes que el centro ofrece suficientes oportunidades para el desarrollo de actividades extraprogramáticas (deportes, cultura, etc.)?</div>
+                        <div class="options">
+                            <label class="option">
+                                <input type="radio" name="area3_q3" value="conforme" required>
+                                Conforme
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="area3_q3" value="no_conforme" required>
+                                No conforme
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="area3_q3" value="sin_interes" required>
+                                Sin interés
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="area3_q3" value="no_sabe" required>
+                                No sabe
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="question">
+                        <div class="question-text">4. ¿Conoces y consideras útiles los servicios de apoyo al estudiante que ofrece el centro (apoyo psicológico, becas, bolsa de trabajo, etc.)?</div>
+                        <div class="options">
+                            <label class="option">
+                                <input type="radio" name="area3_q4" value="conforme" required>
+                                Conforme
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="area3_q4" value="no_conforme" required>
+                                No conforme
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="area3_q4" value="sin_interes" required>
+                                Sin interés
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="area3_q4" value="no_sabe" required>
+                                No sabe
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="question">
+                        <div class="question-text">5. ¿El ambiente general en el centro es seguro, inclusivo y fomenta una buena convivencia entre los estudiantes?</div>
+                        <div class="options">
+                            <label class="option">
+                                <input type="radio" name="area3_q5" value="conforme" required>
+                                Conforme
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="area3_q5" value="no_conforme" required>
+                                No conforme
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="area3_q5" value="sin_interes" required>
+                                Sin interés
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="area3_q5" value="no_sabe" required>
+                                No sabe
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="area-comments">
+                        <label for="area3_comments">Recomendaciones o reclamos para el Área de Servicios de Apoyo y Vida Estudiantil:</label>
+                        <textarea id="area3_comments" name="area3_comments" minlength="10" maxlength="500" placeholder="Escribe aquí tus recomendaciones, sugerencias o reclamos relacionados con los servicios de apoyo o la vida estudiantil..."></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <div class="submit-section">
+                <button type="submit" class="submit-btn">Enviar Encuesta</button>
+            </div>
+        </form>
+
+        <div class="footer-rights">
+            <p>Derechos reservados creado por: Ricardo y Juan Zuñiga 2025 / Trabajo Programacion Inicial 1</p>
+        </div>
+    </div> 
+    
+    <script>
+        // Script para manejar la selección visual de las opciones de radio
+        document.addEventListener('DOMContentLoaded', () => {
+            const options = document.querySelectorAll('.option');
+
+            options.forEach(option => {
+                const radio = option.querySelector('input[type="radio"]');
+
+                // Establecer la clase 'selected' si ya está marcado al cargar
+                if (radio.checked) {
+                    option.classList.add('selected');
+                }
+
+                // Manejar clic en la opción (label)
+                option.addEventListener('click', () => {
+                    // Remover 'selected' de otras opciones en el mismo grupo
+                    const name = radio.name;
+                    document.querySelectorAll(`input[name="${name}"]`).forEach(other
