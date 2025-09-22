@@ -12,45 +12,6 @@ Instrucciones:
 El estudiante deberá leer y calificar digitalmente los siguientes enunciados utilizando la escala: “Conforme”, “No conforme”, “Sin interés” o “No sabe”.
 Las afirmaciones están agrupadas en tres áreas de relevancia, con el propósito de recoger la percepción estudiantil y detectar oportunidades de mejora que contribuyan al fortalecimiento de la experiencia formativa.
 
-Resumen de Códigos Relevantes en el Diseño
-
-Este diseño de "Encuesta de Satisfacción y Sugerencias Estudiantiles" está construido usando HTML para la estructura y contenido, y CSS para el estilo y la responsividad.
-1.	HTML (Estructura y Contenido):
-o	<!DOCTYPE html>, <html>, <head>, <body>: La estructura básica de cualquier página web moderna. lang="es" especifica el idioma.
-o	<meta charset="UTF-8">: Asegura que los caracteres especiales (acentos, ñ) se muestren correctamente.
-o	<meta name="viewport" ...>: Esencial para el diseño responsivo, haciendo que la página se adapte a diferentes tamaños de pantalla (móviles, tablets, escritorio).
-o	<title>: El título de la pestaña del navegador.
-o	<div> con clases como container, header, intro, area, question, options, etc.: Estos son los contenedores principales que organizan todo el contenido de la encuesta, permitiendo aplicar estilos de manera granular.
-o	<h1>, <h2>, <h3>, <p>: Encabezados y párrafos para los títulos y descripciones.
-o	<img> src="logo3.png" alt="...": Para mostrar el logo del CFT. El atributo alt es importante para la accesibilidad.
-o	<form>: El contenedor para todos los elementos de entrada de la encuesta.
-o	<label>, <input type="radio">, <textarea>: Los elementos de formulario clave para la interacción del usuario:
-	label asocia texto descriptivo a las opciones de radio y áreas de texto.
-	input type="radio" permite seleccionar una única opción por pregunta. Los atributos name los agrupan y required los hace obligatorios.
-	textarea para comentarios extensos, con minlength y maxlength para limitar la entrada.
-o	<button type="submit">: El botón para enviar el formulario.
-
-
-2.	CSS (Estilo, Diseño y Responsividad):
-o	* { box-sizing: border-box; margin: 0; padding: 0; }: Un "reset" inicial para asegurar que la página se vea consistente en todos los navegadores, estableciendo un modelo de caja más fácil de trabajar.
-o	body: Define el estilo general de la página:
-	font-family: Usa fuentes modernas y legibles (Segoe UI).
-	background: linear-gradient(...): Un degradado de color naranja oscuro para el fondo de la página.
-	display: flex; justify-content: center; align-items: center;: Utiliza Flexbox para centrar vertical y horizontalmente el contenedor principal de la encuesta en la pantalla.
-o	.container: El contenedor central de la encuesta:
-	max-width, width, margin: 0 auto;: Lo centra y limita su ancho para una mejor lectura en pantallas grandes.
-	background: white; border-radius: 15px; box-shadow: ...;: Le da un fondo blanco, esquinas redondeadas y una sombra sutil para que "flote" sobre el fondo degradado.
-o	linear-gradient en .header y .area-header: Proporciona degradados de color diferentes para los encabezados de la encuesta y de cada sección, dándoles un aspecto moderno.
-o	border-radius y box-shadow en varios elementos: Usados extensivamente para crear un diseño suave, moderno y con sensación de profundidad (por ejemplo, en las secciones de preguntas y en el botón de envío).
-o	display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); en .options: Esto es CSS Grid Layout y es clave para el diseño de las opciones de respuesta. Permite que las opciones se organicen en columnas que se ajustan automáticamente al espacio disponible, haciéndolas responsivas sin esfuerzo.
-o	transition: all 0.3s ease; en .option y .submit-btn: Crea animaciones suaves al interactuar (pasar el ratón por encima o seleccionar) para una mejor experiencia de usuario.
-o	accent-color en input[type="radio"]: Permite colorear el círculo interior de los botones de radio para que coincida con la paleta de colores del diseño.
-o	@media (max-width: 768px) { ... }: Una Media Query fundamental para el diseño responsivo. Dentro de este bloque, se aplican estilos específicos cuando la pantalla tiene 768 píxeles de ancho o menos (típicamente para dispositivos móviles), ajustando márgenes, tamaños de fuente y cambiando la cuadrícula de opciones a una sola columna (grid-template-columns: 1fr;) para mejorar la legibilidad y usabilidad en pantallas pequeñas.
-o	
-Concluyendo:
-El diseño realizado como trabajo solicitado; es un ejemplo claro de una página web moderna y responsiva, que utiliza HTML para una estructura clara y CSS para una presentación visualmente atractiva y adaptable a cualquier dispositivo.
-
-
 Detalle y áreas a calificar.
 
 Área de Interés
