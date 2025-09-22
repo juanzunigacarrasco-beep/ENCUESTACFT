@@ -15,6 +15,7 @@ Las afirmaciones están agrupadas en tres áreas de relevancia, con el propósit
 Detalle y áreas a calificar.
 
 Área de Interés
+
 Área 1: Infraestructura y Recursos de Aprendizaje
 Esta área se enfoca en evaluar las instalaciones y los materiales que el centro pone a disposición de los estudiantes.
 1.	¿Cómo calificarías el estado y la comodidad de las salas de clases y talleres?
