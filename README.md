@@ -36,7 +36,7 @@ Esta sección está diseñada para conocer la percepción de los estudiantes sob
 6.	¿Recibes retroalimentación útil y a tiempo sobre tu desempeño académico por parte de tus docentes?
 7.	¿Tienes alguna sugerencia para mejorar el desempeño de los docentes o la forma en que se imparten las clases?
 
- 	Área 3: Servicios de Apoyo y Vida Estudiantil
+Área 3: Servicios de Apoyo y Vida Estudiantil
 El objetivo de esta área es evaluar los servicios de apoyo al estudiante y el ambiente general del centro.
 1.	¿Cómo calificarías la atención y la eficiencia del personal administrativo (secretaría, finanzas, etc.)?
 2.	¿Los canales de comunicación del centro (página web, redes sociales, correos) te mantienen bien informado sobre noticias y eventos importantes?
