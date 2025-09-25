@@ -41,7 +41,143 @@ El objetivo de esta área es evaluar los servicios de apoyo al estudiante y el a
 1.	¿Cómo calificarías la atención y la eficiencia del personal administrativo (secretaría, finanzas, etc.)?
 2.	¿Los canales de comunicación del centro (página web, redes sociales, correos) te mantienen bien informado sobre noticias y eventos importantes?
 3.	¿Sientes que el centro ofrece suficientes oportunidades para el desarrollo de actividades extraprogramáticas (deportes, cultura, etc.)?
-4.	¿Conoces y consideras útiles los servicios de apoyo al estudiante que ofrece el centro (apoyo psicológico, becas, bolsa de trabajo, etc.)?
-5.	¿El ambiente general en el centro es seguro, inclusivo y fomenta una buena convivencia entre los estudiantes?
-6.	¿El proceso de matrícula e inscripción de asignaturas te resultó claro y sencillo?
-7.	¿Qué sugerencias tienes para mejorar los servicios de apoyo o la experiencia estudiantil en el centro?
+
+4.	Encuesta de Satisfacción y Sugerencias Estudiantiles - CFT Estatal O'Higgins
+ Descripción
+Sistema de encuesta web desarrollado para el Centro de Formación Técnica (CFT) Estatal de O'Higgins, diseñado para recopilar feedback de los estudiantes sobre su experiencia educativa y servicios institucionales.
+ Objetivo
+Crear una herramienta digital que permita a los estudiantes evaluar y proporcionar retroalimentación sobre:
+
+Infraestructura y recursos de aprendizaje
+Calidad docente y procesos de enseñanza
+Servicios de apoyo y vida estudiantil
+
+CARACTERISTICAS
+
+Interfaz Responsive: Adaptable a dispositivos móviles y de escritorio
+Diseño Moderno: UI/UX atractiva con gradientes y animaciones suaves
+Validación de Formularios: Campos requeridos con validación en tiempo real
+Organización por Áreas: Estructura clara dividida en 3 áreas principales
+Sistema de Comentarios: Sección de feedback detallado por área
+Experiencia Interactiva: Efectos hover y transiciones fluidas
+
+Tecnologías Utilizadas
+
+HTML5: Estructura semántica del contenido
+CSS3: Estilos modernos con:
+
+Flexbox y CSS Grid
+Gradientes y sombras
+Animaciones y transiciones
+Media queries para responsividad
+
+JavaScript: Interactividad y manejo de eventos
+Fuentes: Segoe UI y fuentes del sistema
+
+Estructura del Proyecto
+proyecto-encuesta/
+│
+├── INDEX.html          # Archivo principal de la encuesta
+├── logo3.png          # Logo institucional
+├── README.md          # Documentación del proyecto
+└── assets/            # Carpeta de recursos (opcional)
+
+Características de Diseño
+Paleta de Colores
+
+Principal: Gradiente naranja (#dd5620 - #df6a0bfd)
+Secundario: Azul corporativo (#2c3e50 - #34495e)
+Acentos: Púrpura moderno (#667eea - #764ba2)
+
+Tipografía
+
+Familia: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+Jerarquía: Títulos diferenciados y texto legible
+
+Responsividad
+El diseño se adapta a diferentes tamaños de pantalla:
+
+Desktop: Layout completo con múltiples columnas
+Tablet: Ajustes de espaciado y tamaños
+Mobile: Layout de una columna optimizado
+
+Instalación y Uso
+
+Clonar el repositorio
+
+bashgit clone https://github.com/tu-usuario/encuesta-cft-ohiggins.git
+
+Navegar al directorio
+
+bashcd encuesta-cft-ohiggins
+
+Abrir en el navegador
+
+bash# Simplemente abre INDEX.html en tu navegador preferido
+
+Áreas de Evaluación
+1. Infraestructura y Recursos de Aprendizaje
+
+Estado de salas de clases y talleres
+Equipos y maquinarias
+Acceso a tecnología
+Materiales de estudio
+Limpieza y orden
+Biblioteca y recursos digitales
+
+2. Calidad Docente y Proceso de Enseñanza
+
+Dominio de materias
+Metodologías de enseñanza
+Disponibilidad y apoyo docente
+Sistema de evaluación
+Ambiente de respeto
+Retroalimentación académica
+
+3. Servicios de Apoyo y Vida Estudiantil
+
+Atención administrativa
+Canales de comunicación
+Actividades extraprogramáticas
+Servicios de apoyo estudiantil
+Ambiente institucional
+
+Opciones de Respuesta
+Cada pregunta utiliza una escala de 4 opciones:
+
+Conforme: Satisfecho con el aspecto evaluado
+No conforme: Insatisfecho, requiere mejoras
+Sin interés: No es relevante para el estudiante
+No sabe: Desconoce o no tiene información suficiente
+
+Funcionalidades Futuras
+
+ Integración con base de datos
+ Panel de administración para resultados
+ Exportación de reportes
+ Notificaciones por email
+ Análisis estadístico automático
+ Versión multiidioma
+
+Equipo de Desarrollo
+Desarrolladores: Ricardo y Juan Zúñiga
+Año: 2025
+Proyecto: Trabajo Programación Inicial 1
+
+Licencia
+Este proyecto está desarrollado como trabajo académico para el CFT Estatal O'Higgins.
+
+Contribuciones
+Las contribuciones son bienvenidas. Para contribuir:
+
+Fork el proyecto
+Crea una rama para tu feature (git checkout -b feature/AmazingFeature)
+Commit tus cambios (git commit -m 'Add some AmazingFeature')
+Push a la rama (git push origin feature/AmazingFeature)
+Abre un Pull Request
+
+Contacto
+Para consultas sobre este proyecto:
+
+Institución: CFT Estatal O'Higgins
+Desarrolladores: Ricardo y Juan Zúñiga.
