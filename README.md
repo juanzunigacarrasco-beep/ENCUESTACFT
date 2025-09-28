@@ -105,7 +105,7 @@ Instalación y Uso
 
 Clonar el repositorio
 
-bashgit clone https://github.com/tu-usuario/encuesta-cft-ohiggins.git
+bashgit clone https://sites.google.com/alumnos.cftohiggins.cl/encuestadesatisfaccion?usp=sharing
 
 Navegar al directorio
 
